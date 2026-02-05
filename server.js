@@ -16,7 +16,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/rideapp')
 app.use('/api/rides', require('./routes/rides'));
 app.use('/api/auth', require('./routes/authRoutes'));
 
-const PORT = 5000;
+
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
