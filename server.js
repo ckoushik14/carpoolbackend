@@ -7,15 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/rideapp')
+// ✅ REPLACE WITH YOUR REAL ATLAS STRING
+mongoose.connect('mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/rideapp?retryWrites=true&w=majority')
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .catch(err => console.log('Mongo Error:', err));
 
 // Routes
 app.use('/api/rides', require('./routes/rides'));
 app.use('/api/auth', require('./routes/authRoutes'));
-
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
